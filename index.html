@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North East Football Clubs</title>
+    <style>
+
+        /* --------------------
+           GLOBAL STYLES
+        --------------------- */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --------------------
+           NAVIGATION
+        --------------------- */
+        nav {
+            background: #111827;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 22px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav .links a {
+            color: #e5e7eb;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav .links a:hover {
+            color: white;
+        }
+
+        /* --------------------
+           HERO SECTION
+        --------------------- */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+            height: 340px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            max-width: 700px;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+        }
+
+        /* --------------------
+           SECTION WRAPPER
+        --------------------- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        /* --------------------
+           CLUB CARDS
+        --------------------- */
+        .club-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 22px;
+        }
+
+        .club-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            transition: 0.3s ease;
+        }
+
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .club-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .club-content {
+            padding: 20px;
+        }
+
+        .club-content h3 {
+            margin: 0 0 12px;
+            font-size: 22px;
+        }
+
+        .club-content p {
+            margin: 0 0 14px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 8px 14px;
+            background: #111827;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .learn-more:hover {
+            background: #3b82f6;
+        }
+
+        /* --------------------
+           FOOTER
+        --------------------- */
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 600px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+
+        /* --------------------
+           FOOTBALL SIMULATOR STYLES
+        --------------------- */
+        #simulator {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        #field {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #7cfc00;
+            border: 2px solid green;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        #goalkeeper {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            top: 130px;
+            left: 275px;
+            transition: all 0.5s ease;
+        }
+
+        #ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            top: 260px;
+            left: 290px;
+            transition: all 0.5s ease;
+        }
+
+        .corner-button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .corner-button:hover {
+            background: #3b82f6;
+        }
+
+        #simulator h2 {
+            margin-bottom: 20px;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <h1>The History and Legacy of North East England Football Clubs</h1>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <h2 class="section-title">Featured Clubs</h2>
+
+        <div class="club-grid">
+
+            <!-- NEWCASTLE -->
+            <div class="club-card" id="newcastle">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg" alt="">
+                <div class="club-content">
+                    <h3>Newcastle United</h3>
+                    <p>Founded in 1892, Newcastle United is one of England’s most historic clubs, playing at St James’ Park with one of the most passionate and energetic fanbases in the country. This club has been on a huge increase over the coming years with the introduction of the new manager Eddie Howe who has taken the Geordies from a mid-table to bottom table side into a team which has massively effected the top end of the table with a couple european football contributions with them getting into the Champions league on more than one occasion. On top of the climb in the league and european football, they have also thrived in the 2024/25 season with winning the Carabao Cup trophy. They also have multiple nicknames which have been designated to them being: The Toon, Geordies and Magpies.</p>
+                </div>
+            </div>
+
+            <!-- SUNDERLAND -->
+            <div class="club-card" id="sunderland">
+                <img src="https://www.sunderlandecho.com/webimg/b25lY21zOmM4ZTNkYWUxLWU2NDQtNDU3MS04MzQ0LTgxOWZlYmZkNTYzZjo0ZTU0OTc3MS1lNTYyLTQ4M2MtYTg2MS01NDU4Y2UxZDBiMzM=.jpg" alt="">
+                <div class="club-content">
+                    <h3>Sunderland AFC</h3>
+                    <p>Established in 1879, Sunderland have won six top division titles and have a long and proud history playing at the Stadium of Light. This club has been on the rise recently as one of the best looking sides in England with them impressive performance into the beginning of the 2025/26 campaign with a amazing start consisting of 19 points in 11 games placing them 4th in the premier league rankings. This feat of determination shows how much they have improved within the coming seasons after their relegation streak from 2016/17 and 2017/18 being relegated 2 leagues in 2 seasons to climbing back up to top flight football. The nicknames for Sunderland AFC are: The Black Cats, Roker Men and Rokerites however they decided to drop the Rokerites and Roker Men after leaving the Roker Park in 1977.</p>
+                </div>
+            </div>
+
+            <!-- MIDDLESBROUGH -->
+            <div class="club-card" id="boro">
+                <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Middlesbrough_FC_crest.svg" alt="">
+                <div class="club-content">
+                    <h3>Middlesbrough FC</h3>
+                    <p>Middlesbrough, founded in 1876, achieved major success with a League Cup win in 2004 and a UEFA Cup Final appearance in 2006. For a championship side they have an incredible fanbase with how energetic and lively they can be with their chanting and ambission. Middlesbrough have not played top flight football since the 2016/17 season where they had been promoted for one season before ultimately being demoted back to the championship. Although their time at top flight is limited recently, historically they have a very strong team with spending most seasons in division 1/Premier league being 61 seasons out of 115 seasons. They also had an amazing cup run in the season of 2021/22 with getting into the quarter finals after beating Manchester United and Tottenham Hotspur. The nicknames which have been given to Middlesbrough Fc are: The Boro and smoggies due to the town playing a part in heavy industrialization and creating the first train and railway.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTBALL SIMULATOR -->
+    <div id="simulator">
+        <h2>Penalty Shoot Simulator</h2>
+        <div id="field">
+            <img id="goalkeeper" src="https://static.vecteezy.com/system/resources/previews/000/124/993/non_2x/goal-keeper-standing-vector.jpg" alt="Goalkeeper">
+            <img id="ball" src="https://www.pngmart.com/files/21/Football-PNG-Isolated-Pic.png" alt="Football">
+        </div>
+        <div>
+            <button class="corner-button" onclick="shoot('top-left')">Top Left</button>
+            <button class="corner-button" onclick="shoot('top-right')">Top Right</button>
+            <button class="corner-button" onclick="shoot('bottom-left')">Bottom Left</button>
+            <button class="corner-button" onclick="shoot('bottom-right')">Bottom Right</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; Max Finmore | ICT 171 | Student ID: 35909553
+    </footer>
+
+    <script>
+        const goalkeeper = document.getElementById('goalkeeper');
+        const ball = document.getElementById('ball');
+        const message = document.getElementById('message');
+
+        function shoot(corner) {
+            const corners = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+            const keeperChoice = corners[Math.floor(Math.random() * corners.length)];
+
+            const positions = {
+                'top-left': {top: '50px', left: '100px'},
+                'top-right': {top: '50px', left: '400px'},
+                'bottom-left': {top: '180px', left: '100px'},
+                'bottom-right': {top: '180px', left: '400px'}
+            };
+
+            // Move goalkeeper
+            goalkeeper.style.top = positions[keeperChoice].top;
+            goalkeeper.style.left = positions[keeperChoice].left;
+
+            // Move ball
+            ball.style.top = positions[corner].top;
+            ball.style.left = positions[corner].left;
+
+            // Determine result
+            setTimeout(() => {
+                if(corner === keeperChoice){
+                    message.innerText = "Saved! 🧤";
+                    message.style.color = "red";
+                } else {
+                    message.innerText = "Goal! ⚽️";
+                    message.style.color = "green";
+                }
+
+                // Reset ball after 1 second
+                setTimeout(() => {
+                    ball.style.top = '260px';
+                    ball.style.left = '290px';
+                }, 1000);
+
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
+

@@ -6,9 +6,6 @@
     <title>North East Football Clubs</title>
     <style>
 
-        /* --------------------
-           GLOBAL STYLES
-        --------------------- */
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
@@ -22,9 +19,7 @@
             color: inherit;
         }
 
-        /* --------------------
-           NAVIGATION
-        --------------------- */
+
         nav {
             background: #111827;
             display: flex;
@@ -52,9 +47,6 @@
             color: white;
         }
 
-        /* --------------------
-           HERO SECTION
-        --------------------- */
         .hero {
             background: url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
             height: 340px;
@@ -72,9 +64,6 @@
             text-shadow: 0 3px 10px rgba(0,0,0,0.6);
         }
 
-        /* --------------------
-           SECTION WRAPPER
-        --------------------- */
         .container {
             width: 90%;
             max-width: 1100px;
@@ -89,9 +78,6 @@
             font-weight: 600;
         }
 
-        /* --------------------
-           CLUB CARDS
-        --------------------- */
         .club-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -142,9 +128,6 @@
             background: #3b82f6;
         }
 
-        /* --------------------
-           FOOTER
-        --------------------- */
         footer {
             background: #111827;
             color: #d1d5db;
@@ -159,9 +142,6 @@
             }
         }
 
-        /* --------------------
-           FOOTBALL SIMULATOR STYLES
-        --------------------- */
         #simulator {
             width: 90%;
             max-width: 600px;
@@ -233,19 +213,16 @@
 </head>
 <body>
 
-    <!-- HERO -->
     <header class="hero">
         <h1>The History and Legacy of North East England Football Clubs</h1>
     </header>
 
-    <!-- MAIN CONTENT -->
     <div class="container">
 
         <h2 class="section-title">Featured Clubs</h2>
 
         <div class="club-grid">
 
-            <!-- NEWCASTLE -->
             <div class="club-card" id="newcastle">
                 <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg" alt="">
                 <div class="club-content">
@@ -254,7 +231,6 @@
                 </div>
             </div>
 
-            <!-- SUNDERLAND -->
             <div class="club-card" id="sunderland">
                 <img src="https://www.sunderlandecho.com/webimg/b25lY21zOmM4ZTNkYWUxLWU2NDQtNDU3MS04MzQ0LTgxOWZlYmZkNTYzZjo0ZTU0OTc3MS1lNTYyLTQ4M2MtYTg2MS01NDU4Y2UxZDBiMzM=.jpg" alt="">
                 <div class="club-content">
@@ -263,7 +239,6 @@
                 </div>
             </div>
 
-            <!-- MIDDLESBROUGH -->
             <div class="club-card" id="boro">
                 <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Middlesbrough_FC_crest.svg" alt="">
                 <div class="club-content">
@@ -290,7 +265,6 @@
         <p id="message"></p>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         &copy; Max Finmore | ICT 171 | Student ID: 35909553
     </footer>
@@ -311,15 +285,12 @@
                 'bottom-right': {top: '180px', left: '400px'}
             };
 
-            // Move goalkeeper
             goalkeeper.style.top = positions[keeperChoice].top;
             goalkeeper.style.left = positions[keeperChoice].left;
 
-            // Move ball
             ball.style.top = positions[corner].top;
             ball.style.left = positions[corner].left;
 
-            // Determine result
             setTimeout(() => {
                 if(corner === keeperChoice){
                     message.innerText = "Saved!";
@@ -329,7 +300,6 @@
                     message.style.color = "green";
                 }
 
-                // Reset ball after 1 second
                 setTimeout(() => {
                     ball.style.top = '260px';
                     ball.style.left = '290px';

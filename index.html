@@ -158,6 +158,77 @@
                 font-size: 28px;
             }
         }
+
+        /* --------------------
+           FOOTBALL SIMULATOR STYLES
+        --------------------- */
+        #simulator {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        #field {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #7cfc00;
+            border: 2px solid green;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        #goalkeeper {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            top: 130px;
+            left: 275px;
+            transition: all 0.5s ease;
+        }
+
+        #ball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            top: 260px;
+            left: 290px;
+            transition: all 0.5s ease;
+        }
+
+        .corner-button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .corner-button:hover {
+            background: #3b82f6;
+        }
+
+        #simulator h2 {
+            margin-bottom: 20px;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
     </style>
 </head>
 <body>
@@ -204,10 +275,70 @@
         </div>
     </div>
 
+    <!-- FOOTBALL SIMULATOR -->
+    <div id="simulator">
+        <h2>Penalty Shoot Simulator</h2>
+        <div id="field">
+            <img id="goalkeeper" src="https://static.vecteezy.com/system/resources/previews/000/124/993/non_2x/goal-keeper-standing-vector.jpg" alt="Goalkeeper">
+            <img id="ball" src="https://www.pngmart.com/files/21/Football-PNG-Isolated-Pic.png" alt="Football">
+        </div>
+        <div>
+            <button class="corner-button" onclick="shoot('top-left')">Top Left</button>
+            <button class="corner-button" onclick="shoot('top-right')">Top Right</button>
+            <button class="corner-button" onclick="shoot('bottom-left')">Bottom Left</button>
+            <button class="corner-button" onclick="shoot('bottom-right')">Bottom Right</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
     <!-- FOOTER -->
     <footer>
-        &copy; Max Finmore| ICT 171 | Student ID: 35909553
+        &copy; Max Finmore | ICT 171 | Student ID: 35909553
     </footer>
+
+    <script>
+        const goalkeeper = document.getElementById('goalkeeper');
+        const ball = document.getElementById('ball');
+        const message = document.getElementById('message');
+
+        function shoot(corner) {
+            const corners = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+            const keeperChoice = corners[Math.floor(Math.random() * corners.length)];
+
+            const positions = {
+                'top-left': {top: '50px', left: '100px'},
+                'top-right': {top: '50px', left: '400px'},
+                'bottom-left': {top: '180px', left: '100px'},
+                'bottom-right': {top: '180px', left: '400px'}
+            };
+
+            // Move goalkeeper
+            goalkeeper.style.top = positions[keeperChoice].top;
+            goalkeeper.style.left = positions[keeperChoice].left;
+
+            // Move ball
+            ball.style.top = positions[corner].top;
+            ball.style.left = positions[corner].left;
+
+            // Determine result
+            setTimeout(() => {
+                if(corner === keeperChoice){
+                    message.innerText = "Saved!";
+                    message.style.color = "red";
+                } else {
+                    message.innerText = "Goal!";
+                    message.style.color = "green";
+                }
+
+                // Reset ball after 1 second
+                setTimeout(() => {
+                    ball.style.top = '260px';
+                    ball.style.left = '290px';
+                }, 1000);
+
+            }, 500);
+        }
+    </script>
 
 </body>
 </html>
